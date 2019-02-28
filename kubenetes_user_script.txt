@@ -39,3 +39,6 @@ sudo swapoff -a
 sudo rm -rf /var/lib/kubelet/*
 
 sudo apt-get install nfs-common -y
+
+#chmod +x
+#./yourscript.sh

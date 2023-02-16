@@ -1,0 +1,16 @@
+# For this Use case we need two machine with docker installed and running.
+docker swarm init # we need to run this on first machine, this will give join token which we need to run second machine
+docker swarm join --token SWMTKN-1-67naewf2omhv8yrvum1xt5v4nczbfy9bbz2zb82nsof7ld6w11-6w4jfadk9xyuggtvn8i8hbaxy 139.59.78.105:2377
+# for above command plz refere given join token in your first machine
+docker node ls # This will give you two machine in swarm
+#################Netwrok-Overlay####################### we are going to deploy a web and db service.
+docker network  create --driver overlay mydrupal # will create create one over lay network named as mydrupal in swarm cluster
+docker network ls
+docker service create --name psql --network mydrupal -e POSTGRES_PASSWORD=mypass postgres # creting a db-service named as psql in swarm
+docker service ls # will show newly created service.
+docker service ps psql # will show service is running on which node of swarm cluster
+docker service create --name drupal --network mydrupal -p 80:80 drupal # creting a web-service named as drupal in swarm
+docker service ps drupal # will show service is running on which node of swarm cluster
+#any IP address of the node should be put in browser you will get drupal setup page, it shows your setup is working file
+# select postgres as db, username is postgres, debname is postgres password is <mypass> hostname in advance tab should be psql
+#hostname in advance tab should be psql

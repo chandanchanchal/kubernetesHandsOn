@@ -6,7 +6,6 @@ metadata:
     role: redis
     tier: back
   name: redis
-  namespace: instavote
 spec:
   selector:
     app: redis

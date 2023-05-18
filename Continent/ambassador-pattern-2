@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ambassador-example
+spec:
+  containers:
+  - name: redis-client
+    image: redis
+  - name: ambassador
+    image: malexer/twemproxy
+    env:
+    - name: REDIS_SERVERS
+      value: redis-st-0.redis-svc.default.svc.cluster.local:6379:1 
+redis-st-1.redis-svc.default.svc.cluster.local:6379:1
+    ports:
+    - containerPort: 6380

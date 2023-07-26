@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-test
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: dedicated
+                operator: In
+                values:
+                  - devs
+  tolerations:
+    - key: "dedicated"
+      operator: "Equal"
+      value: "devs"
+      effect: "NoSchedule"
+  containers:
+    - name: just-container
+      image: supergiantkir/animals:bear

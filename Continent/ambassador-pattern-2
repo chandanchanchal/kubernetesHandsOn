@@ -10,7 +10,6 @@ spec:
     image: malexer/twemproxy
     env:
     - name: REDIS_SERVERS
-      value: redis-st-0.redis-svc.default.svc.cluster.local:6379:1 
-redis-st-1.redis-svc.default.svc.cluster.local:6379:1
+      value: redis-st-0.redis-svc.default.svc.cluster.local:6379:1,redis-st-1.redis-svc.default.svc.cluster.local:6379:1
     ports:
     - containerPort: 6380

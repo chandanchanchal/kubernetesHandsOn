@@ -1,0 +1,10 @@
+# lets taint node2
+
+kubectl taint nodes node2 app=blue:NoSchedule
+#to see this taint
+kubectl describe node node2 | grep Taint
+# create pod with pod-normal.yml file
+result would be pending state
+# create pod with pod.yaml file from Taint dir.
+result this time pod would be in running state
+

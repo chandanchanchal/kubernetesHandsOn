@@ -10,8 +10,7 @@ spec:
     image: nginx
     imagePullPolicy: IfNotPresent
   tolerations:
-  - key: "node-role.kubernetes.io/master"
-    operator: "Exists"
+  - key: "app"
+    operator: "Equal"
+    value: "blue"
     effect: "NoSchedule"
-  nodeSelector:
-    kubernetes.io/hostname: kubernetes-master

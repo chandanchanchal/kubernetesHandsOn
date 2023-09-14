@@ -1,16 +1,14 @@
-apiVersion: networking.k8s.io/v1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: test-ing  
+  name: simple-ing
+  namespace: kube-system
 spec:
   rules:
-    - host: test-ing.com
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: caddy-svc
-                port:
-                  number: 80
+  - host: check-ing.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: caddy-svc
+          servicePort: 80

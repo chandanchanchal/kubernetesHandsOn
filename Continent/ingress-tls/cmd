@@ -1,3 +1,5 @@
+kubectl run caddy --image caddy
+kubectl expose po caddy --name caddy-svc --port 80
 openssl req -x509 -newkey rsa:4096 -sha256 -nodes -keyout tls.key -out tls.crt -subj "/CN=ckstls.com" -days 365
 kubectl create secret tls sec-cks --cert tls.crt --key tls.key
 curl --cacert tls.crt https://ckstls.com

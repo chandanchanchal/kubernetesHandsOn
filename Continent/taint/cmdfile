@@ -7,4 +7,6 @@ kubectl describe node node2 | grep Taint
 result would be pending state
 # create pod with pod.yaml file from Taint dir.
 result this time pod would be in running state
+# For Taint remove run below command
+kubectl taint nodes k8s-node1 app=blue:NoSchedule-
 

@@ -15,4 +15,4 @@ spec:
     spec:
       containers:
       - name: monitoring-agent
-        image: monitoring-agent
+        image: magueio/monitoring-agent

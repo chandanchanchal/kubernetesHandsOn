@@ -1,0 +1,2 @@
+kubectl apply -f <*.yaml-file-name>
+kubectl logs my-securitycontext-pod

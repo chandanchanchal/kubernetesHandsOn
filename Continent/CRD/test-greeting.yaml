@@ -1,0 +1,8 @@
+apiVersion: cchanchal.io/v1alpha1
+kind: Greeting
+metadata:
+  name: chandan-greeting
+spec:
+  emailToGreet: chandanabbupur@gmail.com
+  messageToGreet: Hello
+  replicas: 1

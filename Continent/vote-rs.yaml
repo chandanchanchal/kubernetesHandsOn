@@ -3,7 +3,7 @@ kind: ReplicaSet
 metadata:
   name: vote
 spec:
-  replicas: 5
+  replicas: 2
   minReadySeconds: 20
   selector:
     matchLabels:

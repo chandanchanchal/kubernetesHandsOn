@@ -4,3 +4,7 @@ kubectl get hpa
 
 kubectl run -i --tty load-generator --image=busybox -- sh
 
+
+while true; do wget -q -O- http://my-app-service; done
+
+

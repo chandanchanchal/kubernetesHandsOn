@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-web-server
+  namespace: default
+  labels:
+    app: nginx
+    tier: frontend
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.25
+    ports:
+    - containerPort: 80
+      name: http
+      protocol: TCP
+    resources:
+      requests:
+        cpu: "100m"
+        memory: "128Mi"
+      limits:
+        cpu: "500m"
+        memory: "512Mi"
+    volumeMounts:
+    - name: html-content
+      mountPath: /usr/share/nginx/html
+    livenessProbe:
+      httpGet:
+        path: /
+        port: 80
+      initialDelaySeconds: 15
+      periodSeconds: 20
+    readinessProbe:
+      httpGet:
+        path: /
+        port: 80
+      initialDelaySeconds: 5
+      periodSeconds: 10
+  volumes:
+  - name: html-content
+    hostPath:
+      path: /var/www/html
+      type: DirectoryOrCreate
+  restartPolicy: Always
+  nodeName: node01  # Optional: pin to specific node if needed

@@ -43,3 +43,4 @@ sudo apt-get install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
 ############-------------------Initialize the Kubernetes Cluster (Master Node Only)-------########
 sudo kubeadm init 
+kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml

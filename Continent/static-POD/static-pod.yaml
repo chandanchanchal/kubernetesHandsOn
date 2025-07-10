@@ -42,4 +42,4 @@ spec:
       path: /var/www/html
       type: DirectoryOrCreate
   restartPolicy: Always
-  nodeName: node01  # Optional: pin to specific node if needed
+  #nodeName: node01  # Optional: pin to specific node if needed

@@ -1,1 +1,2 @@
+kubectl get nodes
 kubectl label nodes <your-node-name> size=large

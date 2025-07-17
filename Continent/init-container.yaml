@@ -16,7 +16,7 @@ spec:
   - name: busybox
     image: busybox
     command: ["/bin/sh"]
-    args: ["-c", "echo '<html><h1>Hi I am from Init container</h1><html>' >> /work-dir/index.html"]
+    args: ["-c", "echo '<html><h1>Hi I am from Init container</h1></html>' >> /work-dir/index.html"]
     volumeMounts:
     - name: workdir
       mountPath: "/work-dir"

@@ -1,0 +1,74 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ccredis-svc
+  labels:
+    app: redis
+spec:
+  ports:
+  - port: 6379
+    name: redis-port
+  clusterIP: None
+  selector:
+    app: ccredis
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: ccredis-st
+spec:
+  serviceName: "ccredis-svc"
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ccredis
+  template:
+    metadata:
+      labels:
+        app: ccredis
+    spec:
+      containers:
+      - name: redis
+        image: redis
+        ports:
+        - containerPort: 6379
+          name: redis
+        volumeMounts:
+        - name: ccredis-data
+          mountPath: /data
+  volumeClaimTemplates:
+  - metadata:
+      name: ccredis-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi
+
+          
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-pv1
+spec:
+  storageClassName: ""
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-pv2
+spec:
+  storageClassName: ""
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data"

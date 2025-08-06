@@ -1,7 +1,7 @@
 kubectl get hpa
 kubectl autoscale deployment my-app --cpu-percent=50 --min=1 --max=5
 kubectl get hpa
-kubectl run -i --tty load-generator --image=busybox -- sh
+kubectl run -i --tty load-generator --rm --image=busybox -- sh
 
 
 while true; do wget -q -O- http://my-app-service; done

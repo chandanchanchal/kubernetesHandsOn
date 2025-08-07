@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-nginx-from-specific
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      app: nginx
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          access: granted
+  policyTypes:
+  - Ingress

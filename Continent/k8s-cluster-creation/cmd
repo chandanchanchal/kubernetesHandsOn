@@ -3,3 +3,7 @@ sudo yum update -y
 sudo modprobe br_netfilter
 sudo modprobe overlay
 sudo sysctl --system
+
+lsmod | grep br_netfilter
+lsmod | grep overlay
+

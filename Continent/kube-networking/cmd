@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: shared-namespace
+spec:
+  containers:
+    - name: p1
+      image: busybox
+      command: ['/bin/sh', '-c', 'sleep 10000']
+    - name: p2
+      image: nginx
+
+# -----cmd----
+  ip netns list
+  kubectl run nginx --image=nginx
+  lsns | grep nginx
+  copy the process IP from above and run
+  lsns -p <pid>
+  check the network namespace (this gives list of all network namespaces)
+  ls -lt /var/run/netns
+  ip netns exec <namespace> ip link
+  kubectl exec -it shared-namespace -- ip addr #run this on controlplane

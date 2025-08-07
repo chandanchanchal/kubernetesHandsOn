@@ -7,3 +7,6 @@ sudo sysctl --system
 lsmod | grep br_netfilter
 lsmod | grep overlay
 
+sysctl net.bridge.bridge-nf-call-iptables
+sysctl net.ipv4.ip_forward
+

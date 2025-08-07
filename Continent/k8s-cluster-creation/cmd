@@ -1,0 +1,5 @@
+sudo yum update -y
+
+sudo modprobe br_netfilter
+sudo modprobe overlay
+sudo sysctl --system

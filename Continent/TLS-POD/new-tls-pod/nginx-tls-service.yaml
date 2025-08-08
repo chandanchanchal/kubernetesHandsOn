@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-tls-svc
+spec:
+  selector:
+    app: nginx-tls
+  type: LoadBalancer
+  ports:
+  - port: 443
+    targetPort: 443
+    protocol: TCP

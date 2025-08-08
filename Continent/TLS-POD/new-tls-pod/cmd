@@ -5,3 +5,8 @@ openssl req -x509 -nodes -days 365 \
   -keyout tls.key \
   -out tls.crt \
   -subj "/CN=nginx/O=ckademo"
+
+kubectl create secret tls nginx-tls \
+  --cert=tls.crt \
+  --key=tls.key
+

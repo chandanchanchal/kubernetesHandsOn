@@ -1,0 +1,5 @@
+helm install nginx-ingress ingress-nginx/ingress-nginx \
+ --create-namespace \
+ --namespace ingress-nginx \
+ --set controller.replicaCount=2 \
+ --set controller.nodeSelector."kubernetes\.io/os"=linux

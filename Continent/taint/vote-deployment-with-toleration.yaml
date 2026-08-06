@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: schoolofdevops/vote:v1
+          image: chandanchanchal/colorapp:v1
           ports:
             - containerPort: 80
               protocol: TCP
